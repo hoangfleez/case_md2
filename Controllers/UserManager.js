@@ -6,6 +6,7 @@ var readlineSync = require('readline-sync');
 var UserManager = /** @class */ (function () {
     function UserManager() {
         this.userList = [];
+        this.userList.push(new User_1.User("admin", "admin", 0));
     }
     UserManager.prototype.register = function () {
         var flag = true;

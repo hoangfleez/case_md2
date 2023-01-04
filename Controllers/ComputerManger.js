@@ -29,21 +29,15 @@ var ComputerManger = /** @class */ (function () {
         this.computerList.splice(index, 1);
         return;
     };
-    ComputerManger.prototype.offComputer = function (id) {
-        var index = this.searchById(id);
-        this.computerList[index].setStatus('Off');
-        var thisTime = new Date();
-        var usedTime = thisTime.getTime() - this.computerList[index].getTimeOn().getTime();
-        return usedTime;
-    };
-    ComputerManger.prototype.payMent = function (id) {
+    ComputerManger.prototype.payment = function (id) {
         var thisTime = new Date();
         var index = this.searchById(id);
         var convertMilsToHours = 60 * 60 * 60;
         var timeUsed = thisTime.getTime() - this.computerList[index].getTimeOn().getTime();
         var pricePerHour = 100000;
-        var payMent = (timeUsed / convertMilsToHours) * pricePerHour;
-        return payMent;
+        var payment = (timeUsed / convertMilsToHours) * pricePerHour;
+        this.computerList[index].setStatus("Off");
+        return payment;
     };
     return ComputerManger;
 }());

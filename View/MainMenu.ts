@@ -1,12 +1,14 @@
 import {UserManager} from "../Controllers/UserManager";
 import {ComputerMenu} from "./ComputerMenu";
+import {UserMenu} from "./UserMenu";
 
 
 const readlineSync = require('readline-sync');
 
 export class MainMenu {
     private userManager: UserManager = new UserManager();
-    private computerMenu: ComputerMenu = new ComputerMenu
+    private computerMenu: ComputerMenu = new ComputerMenu();
+    private userMenu: UserMenu = new UserMenu();
     private menu: string = `
     1. Dang nhap.
     2. Tao tai khoan moi.
@@ -32,10 +34,16 @@ export class MainMenu {
                     if (login == -1) {
                         console.log("<---Sai mat khau hoac tai khoan--->");
                     } else if(login == 1) {
+                       // goi den userMenu
+                        console.log("<--- DANG NHAP THANH CONG --->");
+                        this.userMenu.selection();
+
+                    }else {
                         // Goi den computer
-                        console.log("<--- DANG NHAP THANH CONG --->")
+                        console.log("<---Day la Admin--->");
                         this.computerMenu.selected();
                     }
+
                     break;
                 }
 

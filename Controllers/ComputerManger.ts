@@ -1,4 +1,5 @@
 import {Computer} from "../Model/Computer";
+import {stringify} from "querystring";
 
 export class ComputerManger {
 
@@ -34,22 +35,16 @@ export class ComputerManger {
         return;
     }
 
-    public offComputer(id: number): number {
 
-        let index = this.searchById(id);
-        this.computerList[index].setStatus('Off');
-        let thisTime = new Date();
-        let usedTime = thisTime.getTime() - this.computerList[index].getTimeOn().getTime();
-        return usedTime;
-    }
-
-    public payMent(id: number) {
+    public payment(id: number) {
         let thisTime = new Date();
         let index = this.searchById(id);
         let convertMilsToHours = 60 * 60 * 60;
         let timeUsed = thisTime.getTime() - this.computerList[index].getTimeOn().getTime();
         let pricePerHour = 100000;
-        let payMent = (timeUsed / convertMilsToHours) * pricePerHour;
-        return payMent;
+        let payment = (timeUsed / convertMilsToHours) * pricePerHour;
+        this.computerList[index].setStatus("Off")
+        return payment;
     }
+
 }

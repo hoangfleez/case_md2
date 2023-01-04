@@ -4,6 +4,9 @@ const readlineSync = require('readline-sync');
 
 export class UserManager {
     private userList: User[] = [];
+    constructor(){
+        this.userList.push(new User("admin", "admin",0));
+    }
 
     register() {
         let flag = true;

@@ -3,11 +3,13 @@ exports.__esModule = true;
 exports.MainMenu = void 0;
 var UserManager_1 = require("../Controllers/UserManager");
 var ComputerMenu_1 = require("./ComputerMenu");
+var UserMenu_1 = require("./UserMenu");
 var readlineSync = require('readline-sync');
 var MainMenu = /** @class */ (function () {
     function MainMenu() {
         this.userManager = new UserManager_1.UserManager();
-        this.computerMenu = new ComputerMenu_1.ComputerMenu;
+        this.computerMenu = new ComputerMenu_1.ComputerMenu();
+        this.userMenu = new UserMenu_1.UserMenu();
         this.menu = "\n    1. Dang nhap.\n    2. Tao tai khoan moi.\n    3. Thoat.\n    ";
     }
     MainMenu.prototype.selection = function () {
@@ -29,8 +31,13 @@ var MainMenu = /** @class */ (function () {
                         console.log("<---Sai mat khau hoac tai khoan--->");
                     }
                     else if (login == 1) {
-                        // Goi den computer
+                        // goi den userMenu
                         console.log("<--- DANG NHAP THANH CONG --->");
+                        this.userMenu.selection();
+                    }
+                    else {
+                        // Goi den computer
+                        console.log("<---Day la Admin--->");
                         this.computerMenu.selected();
                     }
                     break;
